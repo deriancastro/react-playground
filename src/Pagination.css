@@ -1,0 +1,22 @@
+.Pagination {
+  width: 300px;
+  display: flex;
+  place-items: center;
+  gap: 30px;
+  justify-content: space-evenly;
+}
+
+.ButtonPagination {
+  padding: 12px;
+  border: red solid 1px;
+  border: none;
+  border-radius: 4px;
+}
+
+.ButtonPagination.activePagination {
+  background: hotpink;
+}
+
+.Span {
+  width: 35px;
+}
