@@ -1,0 +1,7 @@
+.App {
+  display: grid;
+  place-items: center;
+  grid-gap: 30px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
