@@ -1,11 +1,11 @@
 .Button {
   padding: 12px;
-  background: steelblue;
+  background: rgb(216, 226, 226);
   color: white;
   border: none;
   border-radius: 4px;
 }
 
 .Button.active {
-  background: hotpink;
+  background: #eba31d;
 }
