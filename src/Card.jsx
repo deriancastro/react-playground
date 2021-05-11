@@ -8,6 +8,7 @@ export default function Card({
   id,
   showAnswer,
   textAnswer,
+  tags,
 }) {
   const bookmarkClass = isActive ? 'Bookmark Selected' : 'Bookmark'
   const answerClass = showAnswer ? 'Answer' : 'Answer hidden'
@@ -20,6 +21,13 @@ export default function Card({
       </h2>
       <p className="Text">{textQuestion}</p>
       <p className={answerClass}>{textAnswer}</p>
+      <ul className="Tags">
+        {tags.map(tag => (
+          <li key={tag} className="Tag">
+            {tag}
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
