@@ -31,3 +31,13 @@
   margin: 0;
   text-align: justify;
 }
+
+.Answer {
+  margin: 0;
+  text-align: center;
+  background: white;
+}
+
+.hidden {
+  display: none;
+}
