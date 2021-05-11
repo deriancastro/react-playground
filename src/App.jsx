@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Card from './Card'
 import Header from './Header'
+import './Style.css'
 
 export default () => {
   return (

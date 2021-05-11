@@ -4,7 +4,7 @@ import * as React from 'react'
 export default ({ children, isActive, title }) => {
   return (
     <section className="Card">
-      <div className={isActive ? 'Bookmark Selected' : 'Bookmark'}></div>
+      <button className={isActive ? 'Bookmark Selected' : 'Bookmark'}></button>
       <h2 className="Question">{title}</h2>
       <p className="Text">{children}</p>
     </section>

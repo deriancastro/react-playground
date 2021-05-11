@@ -12,14 +12,14 @@
   position: absolute;
   top: -10px;
   right: 10px;
-  border: 25px solid #d3d3d3;
-  border-bottom-color: transparent;
-  height: 10px;
+  background: #d3d3d3;
+  height: 40px;
+  width: 30px;
+  border: none;
 }
 
 .Selected {
-  border: 25px solid #be851c;
-  border-bottom-color: transparent;
+  background: #be851c;
 }
 
 .Question {
