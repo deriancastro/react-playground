@@ -1,80 +1,47 @@
-import * as React from 'react'
+import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import './App.css'
-import Card from './Card'
-import Header from './Header'
-import Pagination from './Pagination'
-import Navigation from './Navigation'
 
-const cards = [
-  {
-    title: 'Greetings',
-    textQuestion: 'How are you?',
-    isActive: false,
-    id: 1,
-    showAnswer: true,
-    textAnswer: 'great! Thanks',
-    tags: ['english', 'informal', 'friends'],
-  },
-  {
-    title: 'Saludos',
-    textQuestion: 'Cómo vas?',
-    isActive: true,
-    id: 2,
-    showAnswer: true,
-    textAnswer: 'super bien, gracias',
-    tags: ['spanish', 'street', 'friends'],
-  },
-  {
-    title: 'Grüße',
-    textQuestion: 'Geht´s dir gut?',
-    isActive: true,
-    id: 3,
-    showAnswer: true,
-    textAnswer: 'jop und bei dir?',
-    tags: ['german', 'street', 'friends'],
-  },
-]
-
-export default function App() {
+export default () => {
+  const [todos, setTodos] = useState([])
   return (
     <div className="App">
-      <div>
-        <Header>Cards</Header>
-      </div>
-      <div className="CardsContainer">
-        {cards.map(
-          ({
-            id,
-            title,
-            textQuestion,
-            isActive,
-            showAnswer,
-            textAnswer,
-            tags,
-          }) => (
-            <Card
-              key={id}
-              id={id}
-              title={title}
-              textQuestion={textQuestion}
-              isActive={isActive}
-              showAnswer={showAnswer}
-              textAnswer={textAnswer}
-              tags={tags}
-            />
-          )
-        )}
-
-        <Pagination currentPage={1} totalPages={34} />
-        <Pagination currentPage={2} totalPages={34} />
-        <Pagination currentPage={34} totalPages={34} />
-      </div>
-
-      <div className="ButtonsContainer">
-        <Navigation page="Home" isActive={true} />
-        <Navigation page="About" isActive={false} />
-        <Navigation page="Imprint" isActive={false} />
-      </div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Add todo:
+          <input name="todo" type="text" />
+        </label>
+        <button>Add</button>
+      </form>
+      <ul>
+        {todos.map(({ text, isDone, id }) => (
+          <li onClick={() => toggleIsDone(id)} key={id}>
+            {text}
+            {isDone && '✌🏼'}
+          </li>
+        ))}
+      </ul>
     </div>
   )
+
+  function toggleIsDone(id) {
+    const index = todos.findIndex(todo => todo.id === id)
+    const todo = todos[index]
+
+    setTodos([
+      ...todos.slice(0, index),
+      { ...todo, isDone: !todo.isDone },
+      ...todos.slice(index + 1),
+    ])
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const form = event.target
+    const input = form.elements.todo
+    const newTodo = { text: input.value, isDone: false, id: uuidv4() } // cuando se envia el form
+    setTodos([...todos, newTodo]) //spread operator ...todos-Array - -se pueden escribir en otro orden
+    form.reset()
+    input.focus()
+  }
 }

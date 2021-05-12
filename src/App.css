@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 48px auto 60px;
   grid-gap: 20px;
-  padding: 0;
+  padding: 20px;
 }
 
 .CardsContainer {
