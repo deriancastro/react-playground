@@ -41,7 +41,7 @@ export default function App() {
       <div>
         <Header>Cards</Header>
       </div>
-      <div className="divCards">
+      <div className="CardsContainer">
         {cards.map(
           ({
             id,
@@ -70,10 +70,10 @@ export default function App() {
         <Pagination currentPage={34} totalPages={34} />
       </div>
 
-      <div>
-        <Navigation home={true} about={false} imprint={false} />
-        <Navigation home={false} about={true} imprint={false} />
-        <Navigation home={false} about={false} imprint={true} />
+      <div className="ButtonsContainer">
+        <Navigation page="Home" isActive={true} />
+        <Navigation page="About" isActive={false} />
+        <Navigation page="Imprint" isActive={false} />
       </div>
     </div>
   )

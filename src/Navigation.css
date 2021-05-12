@@ -1,8 +1,3 @@
-.Navigation {
-  display: flex;
-  height: 60px;
-}
-
 .Navigation > button {
   width: 100%;
   height: 100%;
