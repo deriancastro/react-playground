@@ -1,28 +1,15 @@
 import './Pagination.css'
 import * as React from 'react'
+import Button from './Button'
 
-export default ({ buttonLeftActive, page, buttonRightActive }) => {
+export default function Pagination({ currentPage, totalPages }) {
   return (
     <section className="Pagination">
-      <button
-        className={
-          buttonLeftActive
-            ? 'ButtonPagination activePagination'
-            : 'ButtonPagination'
-        }
-      >
-        &lt;
-      </button>
-      <span className="Span">{page}</span>
-      <button
-        className={
-          buttonRightActive
-            ? 'ButtonPagination activePagination'
-            : 'ButtonPagination'
-        }
-      >
-        &gt;
-      </button>
+      <Button isActive={currentPage !== 1}>&lt;</Button>
+      <span className="Span">
+        {currentPage}/{totalPages}
+      </span>
+      <Button isActive={currentPage !== totalPages}>&gt;</Button>
     </section>
   )
 }

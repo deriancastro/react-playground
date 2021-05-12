@@ -1,0 +1,19 @@
+.App {
+  display: grid;
+  grid-template-rows: 48px auto 60px;
+  grid-gap: 20px;
+  padding: 0;
+}
+
+.CardsContainer {
+  display: grid;
+  place-items: center;
+  grid-gap: 20px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.ButtonsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

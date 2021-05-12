@@ -1,27 +1,80 @@
 import * as React from 'react'
-import Button from './Button'
+import './App.css'
+import Card from './Card'
+import Header from './Header'
 import Pagination from './Pagination'
+import Navigation from './Navigation'
 
-export default () => {
+const cards = [
+  {
+    title: 'Greetings',
+    textQuestion: 'How are you?',
+    isActive: false,
+    id: 1,
+    showAnswer: true,
+    textAnswer: 'great! Thanks',
+    tags: ['english', 'informal', 'friends'],
+  },
+  {
+    title: 'Saludos',
+    textQuestion: 'Cómo vas?',
+    isActive: true,
+    id: 2,
+    showAnswer: true,
+    textAnswer: 'super bien, gracias',
+    tags: ['spanish', 'street', 'friends'],
+  },
+  {
+    title: 'Grüße',
+    textQuestion: 'Geht´s dir gut?',
+    isActive: true,
+    id: 3,
+    showAnswer: true,
+    textAnswer: 'jop und bei dir?',
+    tags: ['german', 'street', 'friends'],
+  },
+]
+
+export default function App() {
   return (
-    <div>
-      <Pagination
-        buttonLeftActive={false}
-        page="1/34"
-        buttonRightActive={true}
-      />
-      <Pagination
-        buttonLeftActive={true}
-        page="22/34"
-        buttonRightActive={true}
-      />
-      <Pagination
-        buttonLeftActive={true}
-        page="34/34"
-        buttonRightActive={false}
-      />
-      <Button isActive={false}>Button: unactive</Button>
-      <Button isActive={true}>Button: active</Button>
+    <div className="App">
+      <div>
+        <Header>Cards</Header>
+      </div>
+      <div className="CardsContainer">
+        {cards.map(
+          ({
+            id,
+            title,
+            textQuestion,
+            isActive,
+            showAnswer,
+            textAnswer,
+            tags,
+          }) => (
+            <Card
+              key={id}
+              id={id}
+              title={title}
+              textQuestion={textQuestion}
+              isActive={isActive}
+              showAnswer={showAnswer}
+              textAnswer={textAnswer}
+              tags={tags}
+            />
+          )
+        )}
+
+        <Pagination currentPage={1} totalPages={34} />
+        <Pagination currentPage={2} totalPages={34} />
+        <Pagination currentPage={34} totalPages={34} />
+      </div>
+
+      <div className="ButtonsContainer">
+        <Navigation page="Home" isActive={true} />
+        <Navigation page="About" isActive={false} />
+        <Navigation page="Imprint" isActive={false} />
+      </div>
     </div>
   )
 }
