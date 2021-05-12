@@ -1,47 +1,50 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import './App.css'
-
 export default () => {
-  const [todos, setTodos] = useState([])
-  return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <label>
-          Add todo:
-          <input name="todo" type="text" />
-        </label>
-        <button>Add</button>
-      </form>
-      <ul>
-        {todos.map(({ text, isDone, id }) => (
-          <li onClick={() => toggleIsDone(id)} key={id}>
-            {text}
-            {isDone && '✌🏼'}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
+  const [size, setSize] = useState(100)
+  const [rotation, setRotation] = useState(0)
+  const [color, setColor] = useState(0)
 
-  function toggleIsDone(id) {
-    const index = todos.findIndex(todo => todo.id === id)
-    const todo = todos[index]
-
-    setTodos([
-      ...todos.slice(0, index),
-      { ...todo, isDone: !todo.isDone },
-      ...todos.slice(index + 1),
-    ])
+  const style = {
+    width: size + 'px',
+    height: size + 'px',
+    transform: 'rotate(' + rotation + 'deg)',
+    backgroundColor: color,
   }
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    const form = event.target
-    const input = form.elements.todo
-    const newTodo = { text: input.value, isDone: false, id: uuidv4() } // cuando se envia el form
-    setTodos([...todos, newTodo]) //spread operator ...todos-Array - -se pueden escribir en otro orden
-    form.reset()
-    input.focus()
+  return (
+    <div className="App">
+      <label>
+        Size:{' '}
+        <input value={size} onChange={handleChange} type="range" max="200" />
+      </label>
+      <label>
+        Rotation:
+        <input
+          value={rotation}
+          onChange={handleRotation}
+          type="range"
+          max="360"
+        />
+      </label>
+      <label>
+        Color:
+        <input value={color} onChange={handleColor} type="color" max="200" />
+      </label>
+      <div style={style} className="Box" />
+    </div>
+  )
+  function handleChange(event) {
+    const input = event.target
+    setSize(input.value)
+  }
+  function handleRotation(event) {
+    const input = event.target
+    setRotation(input.value)
+  }
+  function handleColor(event) {
+    const input = event.target
+    setColor(input.value)
   }
 }
