@@ -14,12 +14,16 @@ export default () => {
         <button>Add</button>
       </form>
       <ul>
-        {todos.map(({ text, isDone, id }) => (
-          <li onClick={() => toggleIsDone(id)} key={id}>
-            {text}
-            {isDone && '✌🏼'}
-          </li>
-        ))}
+        {todos.map(
+          (
+            { text, isDone, id } //cuando se le va dar un objeto como argumento a map se usa ({})
+          ) => (
+            <li onClick={() => toggleIsDone(id)} key={id}>
+              {text}
+              {isDone && '✌🏼'}
+            </li>
+          )
+        )}
       </ul>
     </div>
   )
