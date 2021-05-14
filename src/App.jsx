@@ -38,9 +38,8 @@ const cards = [
 export default function App() {
   return (
     <div className="App">
-      <div>
-        <Header>Cards</Header>
-      </div>
+      <Header>Cards</Header>
+
       <div className="CardsContainer">
         {cards.map(
           ({
